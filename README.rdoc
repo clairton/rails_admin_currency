@@ -1,0 +1,20 @@
+= RailsAdminCurrency
+
+
+Currency type por rails_admin.
+
+Add in you Gemfile
+#mask input
+gem 'maskedinput-rails'
+gem 'maskmoney-rails'
+
+and this in your app/assets/javascripts/application.js and app/assets/javascripts/rails_admin/custom/ui.js
+//= require maskedinput
+//= require maskmoney
+
+and to configure a field type
+...
+field :attribute, :currency
+...
+
+This project rocks and uses MIT-LICENSE.
