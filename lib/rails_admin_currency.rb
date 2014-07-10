@@ -29,16 +29,15 @@ module RailsAdmin
             params[:value]= "#{p[0].gsub(delimiter, '')}.#{p[1]}".to_f
           end
 
-          private
-          def unit
+          register_instance_option :unit do
             I18n.t('number.currency.format.unit')
           end
 
-          def delimiter
+          register_instance_option :delimiter do
             I18n.t('number.currency.format.delimiter')
           end
 
-          def separator
+          register_instance_option :separator do
             I18n.t('number.currency.format.separator')
           end
         end
