@@ -18,15 +18,18 @@ module RailsAdmin
             ActionController::Base.helpers.number_to_currency value
           end
 
-          register_instance_option :html_attributes do
-            options = {
+          register_instance_option :mask_options do
+            {
               thousands: delimiter,
               decimal: separator,
               allowZero: true,
               prefix: unit
             }
+          end
+
+          register_instance_option :html_attributes do
             {
-              onfocus: "$(this).maskMoney(JSON.parse('#{options.to_json}'));"
+              onfocus: "$(this).maskMoney(JSON.parse('#{mask_options.to_json}'));"
             }
           end
 
