@@ -1,9 +1,10 @@
-require "rails_admin_currency/engine"
+require 'rails_admin_currency/engine'
 
 module RailsAdminCurrency
 end
 
 require 'rails_admin/config/fields/types/decimal'
+require 'json'
 
 module RailsAdmin
   module Config
@@ -18,9 +19,14 @@ module RailsAdmin
           end
 
           register_instance_option :html_attributes do
-            options = "{thousands: '#{delimiter}', decimal: '#{separator}', allowZero: true, prefix: '#{unit}'}".squish
+            options = {
+              thousands: delimiter,
+              decimal: separator,
+              allowZero: true,
+              prefix: unit
+            }
             {
-              onfocus: "$(this).maskMoney(#{options});"
+              onfocus: "$(this).maskMoney(JSON.parse('#{options.to_json}'));"
             }
           end
 
