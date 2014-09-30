@@ -25,8 +25,10 @@ module RailsAdmin
           end
 
           def parse_input(params)
-            p= params[:value].gsub(unit, '').split(separator)
-            params[:value]= "#{p[0].gsub(delimiter, '')}.#{p[1]}".to_f
+            if params.has_key?(:value) && !params[:value].nil?
+              p= params[:value].gsub(unit, '').split(separator)
+              params[:value]= "#{p[0].gsub(delimiter, '')}.#{p[1]}".to_f
+            end
           end
 
           register_instance_option :unit do
